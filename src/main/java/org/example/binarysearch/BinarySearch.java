@@ -1,5 +1,7 @@
 package org.example.binarysearch;
 
+import java.util.Arrays;
+
 public class BinarySearch {
     /**
      * 二分查找基础班
@@ -10,6 +12,7 @@ public class BinarySearch {
      * 找不到返回-1
      */
     public static int binarySearchBasic(int[] a, int target) {
+        Arrays.toString(a);
         int i = 0, j = a.length - 1;//设置指针和初值
         while (i <= j) {//范围内有东西
 //            int m = (i + j) / 2;//java除法会自动取整(向下取整，找到中间索引)
@@ -51,4 +54,25 @@ public class BinarySearch {
      * Q：为什么判断条件都写小于符号？
      * A：因为这里数组a是升序排列的，写成小于符号，相当于与数组排列的顺序是一致的。
      */
+
+
+    /**
+     * 二分查找改动版
+     */
+    public static int binarySearchFix(int[] a, int target) {
+        int i = 0, j = a.length;                //fix 1
+        while (i < j) {                         //fix 2
+            int m = (i + j) >>> 1;
+            if (target < a[m]) {
+                j = m;                          //fix 3
+            } else if (a[m] < target) {
+                i = m + 1;
+            } else {
+                return m;
+            }
+        }
+        return -1;
+    }
+
+
 }
