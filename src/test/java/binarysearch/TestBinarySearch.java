@@ -31,4 +31,21 @@ public class TestBinarySearch {
         assertEquals(-1, BinarySearch.binarySearchBasic(a, 15));
         assertEquals(-1, BinarySearch.binarySearchBasic(a, 62));
     }
+
+
+    @Test
+    @DisplayName("binarySearchLeftMost")
+    public void test3() {
+        int[] a = {1, 2, 4, 4, 4, 5, 6, 7};
+        assertEquals(0, BinarySearch.binarySearchLeftMost(a, 1));
+        assertEquals(1, BinarySearch.binarySearchLeftMost(a, 2));
+        assertEquals(2, BinarySearch.binarySearchLeftMost(a, 4));
+        assertEquals(5, BinarySearch.binarySearchLeftMost(a, 5));
+        assertEquals(6, BinarySearch.binarySearchLeftMost(a, 6));
+        assertEquals(7, BinarySearch.binarySearchLeftMost(a, 7));
+
+        assertEquals(-1, BinarySearch.binarySearchLeftMost(a, 0));
+        assertEquals(-1, BinarySearch.binarySearchLeftMost(a, 3));
+        assertEquals(-1, BinarySearch.binarySearchLeftMost(a, 8));
+    }
 }

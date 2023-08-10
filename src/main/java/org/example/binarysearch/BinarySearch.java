@@ -12,7 +12,6 @@ public class BinarySearch {
      * 找不到返回-1
      */
     public static int binarySearchBasic(int[] a, int target) {
-        Arrays.toString(a);
         int i = 0, j = a.length - 1;//设置指针和初值
         while (i <= j) {//范围内有东西
 //            int m = (i + j) / 2;//java除法会自动取整(向下取整，找到中间索引)
@@ -74,5 +73,96 @@ public class BinarySearch {
         return -1;
     }
 
+
+    /**
+     * 二分查找 - LeftMost
+     * 重复元素的数组中，查找最左侧的
+     */
+    public static int binarySearchLeftMost(int[] a, int target) {
+        int i = 0, j = a.length - 1;
+        int candidate = -1; //候选
+        while (i <= j) {
+            int m = (i + j) >>> 1;
+            if (target < a[m]) {
+                //如果目标在中间值的左边，设置右侧指针移至中间索引-1
+                j = m - 1;
+            } else if (a[m] < target) {
+                //如果目标在中间值的右边，设置左侧指针移至中间索引+1
+                i = m + 1;
+            } else {
+                //只需要修改这里，找到目标需要存为候选，然后继续向左边找
+                candidate = m;
+                //继续向左边找，则需要设置右侧指针移至中间索引-1
+                j = m - 1;
+            }
+        }
+        return candidate;
+    }
+
+    /**
+     * 二分查找 - LeftMost
+     * 重复元素的数组中，查找最左侧的
+     * 返回i 不会-1，-1无意义，
+     * 返回的i 代表的是大于等于目标的并且最高左的目标位置！！！
+     */
+    public static int binarySearchLeftMost2(int[] a, int target) {
+        int i = 0, j = a.length - 1;
+        while (i <= j) {
+            int m = (i + j) >>> 1;
+            if (target <= a[m]) {
+                //如果目标在中间值的左边，设置右侧指针移至中间索引-1
+                j = m - 1;
+            } else {
+                //如果目标在中间值的右边，设置左侧指针移至中间索引+1
+                i = m + 1;
+            }
+        }
+        return i;
+    }
+
+    /**
+     * 二分查找 - RightMost
+     * 重复元素的数组中，查找最左侧的
+     */
+    public static int binarySearchRightMost(int[] a, int target) {
+        int i = 0, j = a.length - 1;
+        int candidate = -1; //候选
+        while (i <= j) {
+            int m = (i + j) >>> 1;
+            if (target < a[m]) {
+                //如果目标在中间值的左边，设置右侧指针移至中间索引-1
+                j = m - 1;
+            } else if (a[m] < target) {
+                //如果目标在中间值的右边，设置左侧指针移至中间索引+1
+                i = m + 1;
+            } else {
+                //只需要修改这里，找到目标需要存为候选，然后继续向左边找
+                candidate = m;
+                //继续向左边找，则需要设置右侧指针移至中间索引-1
+                i = m + 1;
+            }
+        }
+        return candidate;
+    }
+
+    /**
+     * 二分查找 - RightMost
+     * 重复元素的数组中，查找最左侧的
+     * 返回<= target的最右侧的位置
+     */
+    public static int binarySearchRightMost2(int[] a, int target) {
+        int i = 0, j = a.length - 1;
+        while (i <= j) {
+            int m = (i + j) >>> 1;
+            if (target < a[m]) {
+                //如果目标在中间值的左边，设置右侧指针移至中间索引-1
+                j = m - 1;
+            } else {
+                //如果目标在中间值的右边，设置左侧指针移至中间索引+1
+                i = m + 1;
+            }
+        }
+        return i - 1;
+    }
 
 }
