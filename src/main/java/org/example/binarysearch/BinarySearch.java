@@ -56,21 +56,20 @@ public class BinarySearch {
 
 
     /**
-     * 二分查找改动版
+     * 二分查找平衡版
+     * 俩分支实现
      */
-    public static int binarySearchFix(int[] a, int target) {
-        int i = 0, j = a.length;                //fix 1
-        while (i < j) {                         //fix 2
+    public static int binarySearchBalance(int[] a, int target) {
+        int i = 0, j = a.length;
+        while (i < j - 1) {
             int m = (i + j) >>> 1;
             if (target < a[m]) {
-                j = m;                          //fix 3
-            } else if (a[m] < target) {
-                i = m + 1;
+                j = m;
             } else {
-                return m;
+                i = m;
             }
         }
-        return -1;
+        return a[i] == target ? i : -1;
     }
 
 

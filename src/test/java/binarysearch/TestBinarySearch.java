@@ -48,4 +48,28 @@ public class TestBinarySearch {
         assertEquals(-1, BinarySearch.binarySearchLeftMost(a, 3));
         assertEquals(-1, BinarySearch.binarySearchLeftMost(a, 8));
     }
+
+
+    @Test
+    @DisplayName("binarySearchBalance 找到")
+    public void test4() {
+        int[] a = {7, 13, 21, 30, 38, 44, 52, 53};
+        assertEquals(0, BinarySearch.binarySearchBalance(a, 7));
+        assertEquals(1, BinarySearch.binarySearchBalance(a, 13));
+        assertEquals(2, BinarySearch.binarySearchBalance(a, 21));
+        assertEquals(3, BinarySearch.binarySearchBalance(a, 30));
+        assertEquals(4, BinarySearch.binarySearchBalance(a, 38));
+        assertEquals(5, BinarySearch.binarySearchBalance(a, 44));
+        assertEquals(6, BinarySearch.binarySearchBalance(a, 52));
+        assertEquals(7, BinarySearch.binarySearchBalance(a, 53));
+    }
+
+    @Test
+    @DisplayName("binarySearchBalance 没找到")
+    public void test5() {
+        int[] a = {7, 13, 21, 30, 38, 44, 52, 53};
+        assertEquals(-1, BinarySearch.binarySearchBalance(a, 0));
+        assertEquals(-1, BinarySearch.binarySearchBalance(a, 15));
+        assertEquals(-1, BinarySearch.binarySearchBalance(a, 62));
+    }
 }
