@@ -1,4 +1,4 @@
-package org.example.datastructure.leetcood206;
+package org.example.datastructure.leetcode206;
 
 
 /**
