@@ -2,6 +2,14 @@ package org.example.datastructure;
 
 import java.util.Iterator;
 
+/**
+ * 基于单向环形链表实现的队列
+ * <p>
+ * 队列只需要操作头，尾部不需要操作，所以只需要一个指针即可
+ *
+ * @param <E>
+ */
+
 public class LinkedListQueue<E> implements Queue<E>, Iterable<E> {
 
     /**
